@@ -89,7 +89,7 @@ function setup_database () {
 			DATABASE_CLASS=mailman.database.mysql.MySQLDatabase
 		fi
 		if [[ ("$DATABASE_URL" == postgres:*) ||
-				("$DATABASE_URL" == postgres+*) ]]; then
+				("$DATABASE_URL" == postgresql:*) ]]; then
 			DATABASE_CLASS=mailman.database.postgresql.PostgreSQLDatabase
 		fi
 	fi
