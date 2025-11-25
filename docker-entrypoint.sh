@@ -175,7 +175,7 @@ EOF
 cat > /tmp/postfix-mailman.cfg <<EOF
 [mta]
 incoming: mailman.mta.postfix.LMTP
-outgoing: mailman.mta.deliver.deliver
+configuration: /etc/postfix-mailman.cfg
 lmtp_host: $MM_HOSTNAME
 lmtp_port: 8024
 smtp_host: $SMTP_HOST
