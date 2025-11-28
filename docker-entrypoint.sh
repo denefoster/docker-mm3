@@ -185,9 +185,6 @@ smtp_pass: $SMTP_HOST_PASSWORD
 smtp_secure_mode: $SMTP_SECURE_MODE
 smtp_verify_hostname: $SMTP_VERIFY_HOSTNAME
 smtp_verify_cert: $SMTP_VERIFY_CERT
-verp_confirmations: yes
-verp_personalized_deliveries: yes
-verp_delivery_interval: 1
 
 
 EOF
@@ -197,10 +194,6 @@ cat > /tmp/ietf-archiver-mailman.cfg <<EOF
 [archiver.prototype]
 enable: yes
 
-[archiver.ietf_mailarchive]
-enable: yes
-class: mailman_mailarchive.IETFMailarchive
-configuration: /etc/ietf_mailarchive.cfg
 EOF
 
 cat > /tmp/ietf-mailarchive.cfg <<EOF
