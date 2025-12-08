@@ -8,7 +8,7 @@ RUN apk update \
        sqlite git postgresql17-client py3-psycopg2 postfix \
     && python3 -m pip install --break-system-packages -U pip setuptools wheel \
         && python3 -m pip install --break-system-packages \
-                   git+https://github.com/ietf-tools/mailman-fork.git@v3.3.9-ietf \
+                   mailman==3.3.10 \
                    'importlib-resources<6.0.0' \
     && apk del build-deps \
     && adduser -S mailman
