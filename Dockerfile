@@ -9,7 +9,6 @@ RUN apk update \
     && python3 -m pip install --break-system-packages -U pip setuptools wheel \
         && python3 -m pip install --break-system-packages \
                    mailman==3.3.10 \
-                   mailman-hyperkitty \
                    'importlib-resources<6.0.0' \
     && apk del build-deps \
     && adduser -S mailman
