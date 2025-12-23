@@ -55,6 +55,18 @@ if [[ ! -v SMTP_VERIFY_CERT ]]; then
 	export SMTP_VERIFY_CERT="true"
 fi
 
+if [[ -v MAILARCHIVE_API_KEY ]]; then
+	export MAILARCHIVE_API_KEY
+fi
+
+if [[ -v MAILARCHIVE_BASE_URL ]]; then
+	export MAILARCHIVE_BASE_URL
+fi
+
+if [[ -v MAILARCHIVE_DESTINATION ]]; then
+	export MAILARCHIVE_DESTINATION
+fi
+
 # Check if REST port, username, and password are set, if not, set them
 # to default values.
 if [[ ! -v MAILMAN_REST_PORT ]]; then
