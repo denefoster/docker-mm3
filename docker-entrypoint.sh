@@ -55,18 +55,6 @@ if [[ ! -v SMTP_VERIFY_CERT ]]; then
 	export SMTP_VERIFY_CERT="true"
 fi
 
-if [[ -v MAILARCHIVE_API_KEY ]]; then
-	export MAILARCHIVE_API_KEY
-fi
-
-if [[ -v MAILARCHIVE_BASE_URL ]]; then
-	export MAILARCHIVE_BASE_URL
-fi
-
-if [[ -v MAILARCHIVE_DESTINATION ]]; then
-	export MAILARCHIVE_DESTINATION
-fi
-
 # Check if REST port, username, and password are set, if not, set them
 # to default values.
 if [[ ! -v MAILMAN_REST_PORT ]]; then
@@ -303,6 +291,31 @@ EOF
 else
 
 echo "HYPERKITTY_API_KEY not defined, skipping HyperKitty setup..."
+
+fi
+
+if [[ -v MAILARCHIVE_API_KEY ]]; then
+
+echo "MAILARCHIVE_API_KEY found, setting up IETF Mail Archive archiver..."
+
+cat >> /etc/mailman.cfg << EOF
+[archiver.ietf_mailarchive]
+class: mailman_mailarchive.IETFMailarchive
+enable: yes
+configuration: /etc/mailman-mailarchive.cfg
+
+EOF
+
+cat > /etc/mailman-mailarchive.cfg <<EOF
+[general]
+base_url: $MAILARCHIVE_BASE_URL
+api_key: $MAILARCHIVE_API_KEY
+destination: $MAILARCHIVE_DESTINATION
+EOF
+
+else
+
+echo "MAILARCHIVE_API_KEY not defined, skipping IETF Mail Archive setup..."
 
 fi
 
