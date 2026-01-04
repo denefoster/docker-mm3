@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   mailman:
   - apiVersion: v2
+    appVersion: 1.0.19
+    created: "2026-01-04T21:01:35.690782089Z"
+    description: A Helm chart for Kubernetes
+    digest: f6ce32f8fd15bcacbac17ea9ae9534b00624878e25fba19ea154a3f7e5140967
+    name: mailman
+    type: application
+    urls:
+    - https://github.com/denefoster/docker-mm3/releases/download/mailman-1.0.19/mailman-1.0.19.tgz
+    version: 1.0.19
+  - apiVersion: v2
     appVersion: 1.0.18
     created: "2025-12-31T00:59:22.809373535Z"
     description: A Helm chart for Kubernetes
@@ -21,4 +31,4 @@ entries:
     urls:
     - https://github.com/denefoster/docker-mm3/releases/download/mailman-1.0.17/mailman-1.0.17.tgz
     version: 1.0.17
-generated: "2025-12-31T00:59:22.80938126Z"
+generated: "2026-01-04T21:01:35.690794582Z"
