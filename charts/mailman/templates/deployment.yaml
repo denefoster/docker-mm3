@@ -42,6 +42,28 @@ spec:
           env:
             - name: MM_HOSTNAME
               value: {{ .Values.mailman.hostname }}
+            - name: MM_RUNNER_ARCHIVE_COUNT
+              value: {{ .Values.mailman.runners.archive.count }}
+            - name: MM_RUNNER_BOUNCES_COUNT
+              value: {{ .Values.mailman.runners.bounces.count }}
+            - name: MM_RUNNER_IN_COUNT
+              value: {{ .Values.mailman.runners.in.count }}
+            - name: MM_RUNNER_LMTP_COUNT
+              value: {{ .Values.mailman.runners.lmtp.count }}
+            - name: MM_RUNNER_OUT_COUNT
+              value: {{ .Values.mailman.runners.out.count }}
+            - name: MM_RUNNER_PIPELINE_COUNT
+              value: {{ .Values.mailman.runners.pipeline.count }}
+            - name: MM_RUNNER_REST_COUNT
+              value: {{ .Values.mailman.runners.rest.count }}
+            - name: MM_RUNNER_RETRY_COUNT
+              value: {{ .Values.mailman.runners.retry.count }}
+            - name: MM_RUNNER_TASK_COUNT
+              value: {{ .Values.mailman.runners.task.count }}
+            - name: MM_RUNNER_VIRGIN_COUNT
+              value: {{ .Values.mailman.runners.virgin.count }}
+            - name: MM_RUNNER_DIGEST_COUNT
+              value: {{ .Values.mailman.runners.digest.count }}
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:

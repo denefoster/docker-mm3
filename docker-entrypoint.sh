@@ -129,8 +129,6 @@ fi
 
 # Generate a basic mailman.cfg.
 cat >> /etc/mailman.cfg << EOF
-[runner.retry]
-sleep_time: 10s
 
 [webservice]
 hostname: $MM_HOSTNAME
@@ -318,6 +316,75 @@ else
 echo "MAILARCHIVE_API_KEY not defined, skipping IETF Mail Archive setup..."
 
 fi
+
+# setup runner numbers
+
+cat >> /etc/mailman.cfg << EOF
+[runner.archive]
+instances: ${MM_RUNNER_ARCHIVE_COUNT:-1}
+
+EOF
+
+cat >> /etc/mailman.cfg << EOF
+[runner.bounces]
+instances: ${MM_RUNNER_BOUNCES_COUNT:-1}
+
+EOF
+
+cat >> /etc/mailman.cfg << EOF
+[runner.in]
+instances: ${MM_RUNNER_IN_COUNT:-1}
+
+EOF
+
+cat >> /etc/mailman.cfg << EOF
+[runner.lmtp]
+instances: ${MM_RUNNER_LMTP_COUNT:-1}
+
+EOF
+
+cat >> /etc/mailman.cfg << EOF
+[runner.out]
+instances: ${MM_RUNNER_OUT_COUNT:-2}
+
+EOF
+
+cat >> /etc/mailman.cfg << EOF
+[runner.pipeline]
+instances: ${MM_RUNNER_PIPELINE_COUNT:-1}
+
+EOF
+
+cat >> /etc/mailman.cfg << EOF
+[runner.rest]
+instances: ${MM_RUNNER_REST_COUNT:-2}
+
+EOF
+
+cat >> /etc/mailman.cfg << EOF
+[runner.retry]
+instances: ${MM_RUNNER_RETRY_COUNT:-1}
+sleep_time: 10s
+
+EOF
+
+cat >> /etc/mailman.cfg << EOF
+[runner.task]
+instances: ${MM_RUNNER_TASK_COUNT:-1}
+
+EOF
+
+cat >> /etc/mailman.cfg << EOF
+[runner.virgin]
+instances: ${MM_RUNNER_VIRGIN_COUNT:-1}
+
+EOF
+
+cat >> /etc/mailman.cfg << EOF
+[runner.digest]
+instances: ${MM_RUNNER_DIGEST_COUNT:-1}
+
+EOF
 
 # Now chown the places where mailman wants to write stuff.
 VAR_DIR="/opt/mailman/var"
