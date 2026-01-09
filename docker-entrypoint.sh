@@ -386,6 +386,15 @@ instances: ${MM_RUNNER_DIGEST_COUNT:-1}
 
 EOF
 
+cat >> /etc/mailman.cfg <<EOF
+[ARC]
+enabled: ${ARC_ENABLED}
+domain: ${ARC_DOMAIN}
+privkey: ${ARC_KEY_PATH}
+selector: ${ARC_SELECTOR}
+
+EOF
+
 # Now chown the places where mailman wants to write stuff.
 VAR_DIR="/opt/mailman/var"
 # Check if the directory exists
