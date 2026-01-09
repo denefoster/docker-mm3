@@ -389,6 +389,7 @@ EOF
 cat >> /etc/mailman.cfg <<EOF
 [ARC]
 enabled: ${ARC_ENABLED}
+authserv_id: ${ARC_AUTHSERVER_ID}
 domain: ${ARC_DOMAIN}
 privkey: ${ARC_KEY_PATH}
 selector: ${ARC_SELECTOR}

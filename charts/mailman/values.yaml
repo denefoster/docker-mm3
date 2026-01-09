@@ -43,9 +43,10 @@ mailman:
       count: 1
   arc:
     enabled: false
-    domain: mydomain.cmo
+    domain: mydomain.com
     keyPath: /tmp/key
     selector: arc
+    authserver_id: mydomain.com
 
 #  MAILARCHIVE_API_KEY: c2FuZGJveC1hcGkta2V5LWZvci10ZXN0aW5nLW1haWxtYW4=
 #  MAILARCHIVE_BASE_URL: aHR0cDovL21haWxhcmNoaXZlLXNhbmRib3gubGlzdHNlcnZlci5zdmMuY2x1c3Rlci5sb2NhbC9hcmNoLw==

@@ -83,6 +83,8 @@ spec:
               value: "{{ .Values.mailman.arc.keyPath }}"
             - name: ARC_SELECTOR
               value: "{{ .Values.mailman.arc.selector }}"
+            - name: ARC_AUTHSERVER_ID
+              value: "{{ .Values.mailman.arc.authserver_id }}"
             - name: MAILARCHIVE_API_KEY
               valueFrom:
                 secretKeyRef:
