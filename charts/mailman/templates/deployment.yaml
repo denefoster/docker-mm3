@@ -75,6 +75,14 @@ spec:
               value: {{ .Values.mailman.smtpHost }}
             - name: SMTP_PORT
               value: "{{ .Values.mailman.smtpPort }}"
+            - name: ARC_ENABLED
+              value: "{{ .Values.mailman.arc.enabled }}"
+            - name: ARC_DOMAIN
+              value: "{{ .Values.mailman.arc.domain }}"
+            - name: ARC_KEY_PATH
+              value: "{{ .Values.mailman.arc.keyPath }}"
+            - name: ARC_SELECTOR
+              value: "{{ .Values.mailman.arc.selector }}"
             - name: MAILARCHIVE_API_KEY
               valueFrom:
                 secretKeyRef:
