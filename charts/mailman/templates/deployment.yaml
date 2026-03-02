@@ -100,6 +100,38 @@ spec:
                 secretKeyRef:
                   name: {{ tpl .Values.mailman.mailarchiver.destination.existingSecretName . }}
                   key: {{ tpl .Values.mailman.mailarchiver.destination.existingSecretKey . }}
+            {{- if .Values.mailman.globalAllowlistFqdn }}
+            - name: GLOBAL_ALLOWLIST_FQDN
+              value: "{{ .Values.mailman.globalAllowlistFqdn }}"
+            {{- end }}
+            - name: MAILMAN_REST_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ tpl .Values.mailman.restApi.user.existingSecretName . }}
+                  key: {{ tpl .Values.mailman.restApi.user.existingSecretKey . }}
+            - name: MAILMAN_REST_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ tpl .Values.mailman.restApi.pass.existingSecretName . }}
+                  key: {{ tpl .Values.mailman.restApi.pass.existingSecretKey . }}
+            {{- if .Values.mailman.smtpAuth.enabled }}
+            - name: SMTP_HOST_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ tpl .Values.mailman.smtpAuth.user.existingSecretName . }}
+                  key: {{ tpl .Values.mailman.smtpAuth.user.existingSecretKey . }}
+            - name: SMTP_HOST_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ tpl .Values.mailman.smtpAuth.pass.existingSecretName . }}
+                  key: {{ tpl .Values.mailman.smtpAuth.pass.existingSecretKey . }}
+            {{- end }}
+            - name: SMTP_SECURE_MODE
+              value: "{{ .Values.mailman.smtpSecureMode }}"
+            - name: SMTP_VERIFY_CERT
+              value: "{{ .Values.mailman.smtpVerifyCertificate }}"
+            - name: SMTP_VERIFY_HOSTNAME
+              value: "{{ .Values.mailman.smtpVerifyHostname }}"
           ports:
             - name: api
               containerPort: {{ .Values.service.apiPort }}

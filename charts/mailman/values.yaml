@@ -13,10 +13,28 @@ mailman:
     destination:
       existingSecretName: mailman-mailarchive
       existingSecretKey: destination
+  restApi:
+    user:
+      existingSecretName: mailman
+      existingSecretKey: mailmanApiUser
+    pass:
+      existingSecretName: mailman
+      existingSecretKey: mailmanApiPass
 
   mta: postfix
   smtpHost: postfix
   smtpPort: 25
+  smtpSecureMode: false
+  smtpVerifyHostname: false
+  smtpVerifyCertificate: false
+  smtpAuth:
+    enabled: false
+    user:
+      existingSecretName: mailman
+      existingSecretKey: mailmanSmtpUser
+    pass:
+      existingSecretName: mailman
+      existingSecretKey: mailmanSmtpPass
   runners:
     archive:
       count: 1
@@ -41,6 +59,7 @@ mailman:
       count: 1
     digest:
       count: 1
+  globalAllowlistFqdn: ""
   arc:
     enabled: false
     domain: mydomain.com
@@ -66,6 +85,15 @@ mailarchiveSecret:
     baseUrl: http://mailarchive/arch/
     destination: http://mailarchive/api/v1/message/import/
 
+mailmanSecret:
+  create: false
+  name: mailman
+  data:
+    mailmanApiUser: restadmin
+    mailmanApiPass: restpass
+    mailmanSmtpUser: smtpuser
+    mailmanSmtpPass: smtpuser
+
 # Default values for mailman.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
@@ -75,7 +103,7 @@ replicaCount: 1
 
 # This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
 image:
-  repository: ghcr.io/denefoster/docker-mm3
+  repository: ghcr.io/ietf-tools/container-mailman
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
